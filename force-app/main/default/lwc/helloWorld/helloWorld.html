@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Hello Salesforce Demo" icon-name="standard:account">
+        <div class="slds-m-around_medium">
+            <p class="slds-text-heading_small">Welcome to the Salesforce Demo!</p>
+            <p class="slds-m-top_small">
+                This Lightning Web Component is part of the demo project. 
+                Use the Salesforce CLI to deploy it to your org.
+            </p>
+            <lightning-button
+                label={buttonLabel}
+                onclick={handleClick}
+                class="slds-m-top_medium">
+            </lightning-button>
+            <template if:true={showMessage}>
+                <p class="slds-m-top_small slds-text-color_success">{message}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
