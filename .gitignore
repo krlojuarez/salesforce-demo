@@ -1,0 +1,26 @@
+# Salesforce DX
+.sfdx/
+.sf/
+
+# Node modules (if using JS/TS projects or tools)
+node_modules/
+
+# VS Code local settings
+.vscode/settings.json.local
+
+# Environment variables
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Build artifacts
+dist/
+build/

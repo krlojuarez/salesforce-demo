@@ -1,0 +1,10 @@
+{
+  "salesforcedx-vscode-core.show-cli-success-msg": true,
+  "editor.formatOnSave": true,
+  "[apex]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
+}
