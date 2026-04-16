@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>Is_Status_Closed</name>
+        <label>Is Status Closed?</label>
+        <locationX>176</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default</defaultConnectorLabel>
+        <rules>
+            <name>Status_Changed_to_Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Subject_with_Closed</targetReference>
+            </connector>
+            <label>Status Changed to Closed</label>
+        </rules>
+    </decisions>
+    <description>Appends "Closed" to the Case subject when the case status is changed to Closed</description>
+    <environments>Default</environments>
+    <interviewLabel>Case: Append Closed to Subject</interviewLabel>
+    <isTemplate>false</isTemplate>
+    <label>Case: Append Closed to Subject</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>LowCodeCloud</value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Subject_with_Closed</name>
+        <label>Update Subject with Closed</label>
+        <locationX>50</locationX>
+        <locationY>396</locationY>
+        <filterLogic>and</filterLogic>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Formula_Append_Closed</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <formulas>
+        <name>Formula_Append_Closed</name>
+        <dataType>String</dataType>
+        <description>Appends " - Closed" to the existing subject</description>
+        <expression>IF(
+    ISBLANK({!$Record.Subject}),
+    "Closed",
+    {!$Record.Subject} &amp; " - Closed"
+)</expression>
+    </formulas>
+    <start>
+        <locationX>176</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Status_Closed</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>caseRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+</Flow>
