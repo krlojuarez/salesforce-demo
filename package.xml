@@ -336,11 +336,13 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>Case_Append_Closed_to_Subject</members>
         <members>customer_satisfaction</members>
         <members>net_promoter_score</members>
         <name>Flow</name>
     </types>
     <types>
+        <members>Case_Append_Closed_to_Subject</members>
         <members>customer_satisfaction</members>
         <members>net_promoter_score</members>
         <name>FlowDefinition</name>
